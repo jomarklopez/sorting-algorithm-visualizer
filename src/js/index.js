@@ -1,5 +1,5 @@
 
-let chosenArraySize = 5;
+let chosenArraySize = 100;
 let values;
 
 let comparisons = 0;
@@ -20,7 +20,7 @@ let mySorting = {
         this.canvas.height = 500;
         this.canvas.style.backgroundColor = "black";
         this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        document.querySelector(".wrapper").insertBefore(this.canvas, document.querySelector(".wrapper")[0]);
     }
 }
 
@@ -40,7 +40,7 @@ function sortVisually(values) {
         ctx.beginPath();       // Start a new path
 
 
-        ctx.fillRect(position * (chosenArraySize / (chosenArraySize / 10)), (mySorting.canvas.height) - (values[position] * (mySorting.canvas.height / chosenArraySize)), 10, mySorting.canvas.height);
+        ctx.fillRect(position * (chosenArraySize / 10), (mySorting.canvas.height) - (values[position] * (mySorting.canvas.height / chosenArraySize)), 10, mySorting.canvas.height);
         ctx.stroke();          // Render the path
 
     }
@@ -53,18 +53,30 @@ function sortVisually(values) {
  * 
  */
 
-/* Fisher  */
-/*
-Bubble sort algorithm
-function bubbleSort(values) {
-    for (let outer = 0; outer < values.length; outer++) {
-        for (let inner = 0; inner < values.length - outer - 1; inner++) {
-            if (a > b) {
-                swapValues(values);
+/* Fisher-Yates Shuffle Algorithm */
+Array.prototype.fyShuffle = function () {
+    let temp, j, n = this.length;
+    while (--n != 0) {
+        j = Math.floor(Math.random() * (n + 1));
+        temp = this[j];
+        this[j] = this[n];
+        this[n] = temp;
+    }
+    return this;
+
+}
+
+/*  Bubble sort algorithm
+        function bubbleSort(values) {
+            for (let outer = 0; outer < values.length; outer++) {
+                for (let inner = 0; inner < values.length - outer - 1; inner++) {
+                    if (a > b) {
+                        swapValues(values);
+                    }
+                }
             }
         }
-    }
-}*/
+*/
 
 let outer = 0;
 let inner = 0;
