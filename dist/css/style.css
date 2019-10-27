@@ -1,13 +1,21 @@
+body {
+    background-color: lightgray;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
 }
 
 .nav {
-    width: 1000px;
+    width: 1111px;
     margin: 0 auto;
+    display: flex;
 }
+
+.nav .selectSort {}
 
 canvas {
     margin: 0 auto;
+    `
 }
